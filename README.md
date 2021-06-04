@@ -23,7 +23,7 @@
                                      
 
 
-## How to install MOFF?
+## How to install MOFF
 
  **Note: ProTiler is written in Python,Python>=2.7 is needed**
 
@@ -52,8 +52,7 @@
  ```
     
 
-
-## How to use MOFF? 
+## How to use MOFF
 
 ### 1. MOFF score: Predict off-target effects for given gRNA-target pairs
 
