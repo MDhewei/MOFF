@@ -1,0 +1,15 @@
+README.md
+setup.py
+MOFF/MOFF.py
+MOFF/MOFF_prediction.py
+MOFF/__init__.py
+MOFF.egg-info/PKG-INFO
+MOFF.egg-info/SOURCES.txt
+MOFF.egg-info/dependency_links.txt
+MOFF.egg-info/requires.txt
+MOFF.egg-info/top_level.txt
+MOFF.egg-info/zip-safe
+MOFF/StaticFiles/GOP_model_3.h5
+MOFF/StaticFiles/M1_matrix_dic_D9
+MOFF/StaticFiles/M2_matrix_smooth_MLE
+bin/MOFF
