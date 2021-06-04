@@ -1,3 +1,7 @@
+[![](https://img.shields.io/badge/Pypi-v1.0.2-519dd9.svg)](https://pypi.org/project/MOFF/)
+[![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/MOFF/blob/master/LISENCE.txt)
+![](https://img.shields.io/badge/language-python-orange.svg)
+
 ## Introduction to MOFF                                   
                            # # # # #   # # # #   # # # #  # # # # 
                            #   #   #   #     #   #        #       
