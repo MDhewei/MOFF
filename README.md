@@ -122,7 +122,7 @@ MOFF score -i MOFFscore_test.txt
 #### Example to run MOFF aggregate
 
 ```console
-   MOFF aggregate -i MOFFaggregation_test.txt
+MOFF aggregate -i MOFFaggregation_test.txt
 ```
 
 #### Columns of Output table
@@ -168,7 +168,7 @@ WT as mutant and mutant sequence as wildtype**
 #### Example to run MOFF allele
 
 ```console
-   python MOFF.py allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGA -p R882C
+python MOFF.py allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGA -p R882C
 ```
 
 #### Columns of Output table
