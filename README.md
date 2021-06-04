@@ -65,13 +65,14 @@
                         GAGTCCGAGCAGAAGAAGAATGG,GAGTCCAAGTAGAAGAAAAATGG
                         GTTGCCCCACAGGGCAGTAAAGG,GTGGACACCCCGGGCAGGAAAGG
                         GGGTGGGGGGAGTTTGCTCCAGG,AGGTGGGGTGAGTTTGCTCCAGG
-
+                        
+   
 
      Arguments of the program:
 
      -i/--inputfile (required): 
      Input files containing sgRNA sequences and corresponding DNA target sequences.
-
+ 
      -p/--prefix (Optional): 
      Prefix of the file to save the outputs,default: ScoreTest.
 
