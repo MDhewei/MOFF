@@ -27,24 +27,24 @@
 
  **Note: ProTiler is written in Python,Python>=2.7 is needed**
 
-    Step1: Install Anaconda (highly recomended)
+ Step1: Install Anaconda (highly recomended)
     
  ```console
  wget https://repo.continuum.io/archive/Anaconda2-2018.12-Linux-x86_64.sh 
  bash Anaconda2-2018.12-Linux-x86_64.sh 
  ```
 
-    Step2: Install required python packages
+ Step2: Install required python packages
  ```console   
  pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
  ```  
 
-    Step3: Install MOFF through pip
+ Step3: Install MOFF through pip
  ```console     
  pip install MOFF
  ```
     
-    Step4: OR you can nstall MOFF through git clone
+ Step4: OR you can nstall MOFF through git clone
  ```console   
  git clone https://github.com/MDhewei/MOFF.git
  cd MOFF
