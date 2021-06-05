@@ -2,7 +2,7 @@
 [![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/MOFF/blob/master/LICENSE)
 ![](https://img.shields.io/badge/language-python-orange.svg)
 
-## Introduction to MOFF 
+## Introduction of MOFF 
   
                                 # # # # #   # # # #   # # # #  # # # # 
                                 #   #   #   #     #   #        #       
