@@ -3,11 +3,11 @@
 ![](https://img.shields.io/badge/language-python-orange.svg)
 
 ## Introduction to MOFF                                   
-                           # # # # #   # # # #   # # # #  # # # # 
-                           #   #   #   #     #   #        #       
-                           #   #   #   #     #   # # # #  # # # #    
-                           #   #   #   #     #   #        #          
-                           #   #   #   # # # #   #        #          
+                                # # # # #   # # # #   # # # #  # # # # 
+                                #   #   #   #     #   #        #       
+                                #   #   #   #     #   # # # #  # # # #    
+                                #   #   #   #     #   #        #          
+                                #   #   #   # # # #   #        #          
                                      
 
     Hi,My name is MOFF, I was designed to predict off-target effects for CRISPR/Cas9! 
