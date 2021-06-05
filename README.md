@@ -2,7 +2,8 @@
 [![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/MOFF/blob/master/LICENSE)
 ![](https://img.shields.io/badge/language-python-orange.svg)
 
-## Introduction to MOFF                                   
+## Introduction to MOFF 
+  
                                 # # # # #   # # # #   # # # #  # # # # 
                                 #   #   #   #     #   #        #       
                                 #   #   #   #     #   # # # #  # # # #    
@@ -25,7 +26,7 @@
 
 ## How to install MOFF
 
- **Note: ProTiler is written in Python,Python>=2.7 is needed**
+ **Note: MOFF is written in Python,Python>=2.7 is needed**
 
  Step1: Install Anaconda (highly recomended)
     
