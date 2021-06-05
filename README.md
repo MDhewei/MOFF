@@ -44,7 +44,7 @@
  pip install MOFF
  ```
     
- Step4: OR you can nstall MOFF through git clone
+ Step4: **OR** you can install MOFF through git clone
  ```console   
  git clone https://github.com/MDhewei/MOFF.git
  cd MOFF
