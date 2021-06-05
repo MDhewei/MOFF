@@ -57,8 +57,6 @@
 
 ### 1. MOFF score: Predict off-target effects for given gRNA-target pairs
 
-#### Inputs for MOFF score
-
 MOFFscore require user to provide .csv or .txt file containing sgRNA sequences and corresponding 
 DNA target sequences.One gRNA(20bp+PAM) and one target(20bp+PAM) per line. Note that MOFF is designed
 for mismatch-only off-target prediction, not for indel mutations. See example file [here.](https://github.com/MDhewei/MOFF/blob/master/MOFF/MOFFscore_test.txt)
@@ -168,13 +166,13 @@ and mutant sequence as wildtype.
     1). To knockout R882C allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
     
-    2) To knockout R882H allele
+    2). To knockout R882H allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
     
-    3) To knockout WT in R882C cell
+    3). To knockout WT in R882C cell
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
     
-    4) To knockout WT in R882H cell
+    4). To knockout WT in R882H cell
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -p WT
     
 
