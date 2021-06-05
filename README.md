@@ -137,7 +137,7 @@ MOFF allele require the users to input local DNA sequences of wild-type allele a
 Two DNA sequence should be of same length. There should be at least one hit of 20bp+PAM(NGG) in 
 the DNA sequence to be knockout and the mutation point should be included within the hit. If you 
 want to design sgRNA specifically target WT allele, you just input DNA sequence of WT as mutant 
-and mutant sequence as wildtype.
+and mutant sequence as wildtype. 
 
      Arguments of the program:
 
@@ -158,13 +158,25 @@ and mutant sequence as wildtype.
                     MOFF_aggregation will be generated in current working directory.
                     
 
- 
-
 #### Example to run MOFF allele
 
-```console
-python MOFF.py allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGA -p R882C
-```
+    For example two mutant for DNMT3a:
+    ACTGACGTCTCCAACATGAGC|CGC|TTGGCGAGGCAGAGACTGCT (WT)
+    ACTGACGTCTCCAACATGAGC|tGC|TTGGCGAGGCAGAGACTGCT (R882C)
+    ACTGACGTCTCCAACATGAGC|CaC|TTGGCGAGGCAGAGACTGCT (R882H)
+    
+    1). To knockout R882C allele
+    MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
+    
+    2) To knockout R882H allele
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
+    
+    3) To knockout WT in R882C cell
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
+    
+    4) To knockout WT in R882H cell
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -p WT
+    
 
 #### Columns of Output table
 
