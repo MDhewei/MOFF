@@ -26,7 +26,7 @@
 
 ## How to install MOFF
 
- **Note: MOFF is written in Python,Python>=2.7 is needed**
+ **Note: MOFF is written in Python,Python>=3.4 is needed**
 
  Step1: Install Anaconda (highly recomended)
     
