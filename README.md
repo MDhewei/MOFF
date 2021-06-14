@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+[![](https://img.shields.io/badge/Pypi-v1.1.0-519dd9.svg)](https://pypi.org/project/MOFF/)
+[![License: GUN](https://img.shields.io/badge/License-GUN-yellow.svg)](https://github.com/MDhewei/MOFF/blob/master/LICENSE)
+![](https://img.shields.io/badge/language-python-orange.svg)
+
+>>>>>>> e3d1fac8d4a134733ecac2759abbbdf4576d5659
 ## Introduction of MOFF 
   
                                 # # # # #   # # # #   # # # #  # # # # 
@@ -22,7 +29,11 @@
 
 ## How to install MOFF
 
+<<<<<<< HEAD
  **Note: MOFF is written in Python,Python>=2.7 is needed**
+=======
+ **Note: MOFF is written in Python,Python>=3.4 is needed**
+>>>>>>> e3d1fac8d4a134733ecac2759abbbdf4576d5659
 
  Step1: Install Anaconda (highly recomended)
     
@@ -53,8 +64,11 @@
 
 ### 1. MOFF score: Predict off-target effects for given gRNA-target pairs
 
+<<<<<<< HEAD
 #### Inputs for MOFF score
 
+=======
+>>>>>>> e3d1fac8d4a134733ecac2759abbbdf4576d5659
 MOFFscore require user to provide .csv or .txt file containing sgRNA sequences and corresponding 
 DNA target sequences.One gRNA(20bp+PAM) and one target(20bp+PAM) per line. Note that MOFF is designed
 for mismatch-only off-target prediction, not for indel mutations. See example file [here.](https://github.com/MDhewei/MOFF/blob/master/MOFF/MOFFscore_test.txt)
@@ -164,6 +178,7 @@ and mutant sequence as wildtype.
     1). To knockout R882C allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
     
+<<<<<<< HEAD
     2) To knockout R882H allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
     
@@ -171,6 +186,15 @@ and mutant sequence as wildtype.
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
     
     4) To knockout WT in R882H cell
+=======
+    2). To knockout R882H allele
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
+    
+    3). To knockout WT in R882C cell
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
+    
+    4). To knockout WT in R882H cell
+>>>>>>> e3d1fac8d4a134733ecac2759abbbdf4576d5659
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -p WT
     
 
