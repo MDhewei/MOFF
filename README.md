@@ -39,6 +39,7 @@
  Step2: Install required python packages
  ```console   
  pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
+ pip install tensorflow
  ```  
 
  Step3: Install MOFF through pip
