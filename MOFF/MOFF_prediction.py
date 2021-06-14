@@ -315,14 +315,14 @@ def MOFF_Allele(m1_dic,m2_dic,s1,s2):
     df['CE_KO'] = CombineGM(m2_dic,sg_ls,d1_ls)
     df['MMs_KO'] = MisNum(sg_ls,d1_ls)
     df['MisType_KO'] = MisType(sg_ls,d1_ls)
-    df['GMT_KO'] = df['GOP']**df['MMs_KO']
+    df['GMT_KO'] = df['GMT']**df['MMs_KO']
     df['MOFF_KO'] = df['MDE_KO']*df['CE_KO']*df['GMT_KO'] ## MOFF score 
     
     df['MDE_NA'] = Multiply(m1_dic,sg_ls,d2_ls)
     df['CE_NA'] = CombineGM(m2_dic,sg_ls,d2_ls)
     df['MMs_NA'] = MisNum(sg_ls,d2_ls)
     df['MisType_NA'] = MisType(sg_ls,d2_ls)
-    df['GMT_NA'] = df['GOP']**df['MMs_NA']
+    df['GMT_NA'] = df['GMT']**df['MMs_NA']
     df['MOFF_NA'] = df['MDE_NA']*df['CE_NA']*df['GMT_NA']
     
     return df.loc[:,['sgRNA','DNA_KO','DNA_NA','MisType_KO','MisType_NA','GMT','MOFF_KO','MOFF_NA']]
