@@ -324,8 +324,9 @@ def MOFF_Allele(m1_dic,m2_dic,s1,s2):
     df['MisType_NA'] = MisType(sg_ls,d2_ls)
     df['GMT_NA'] = df['GMT']**df['MMs_NA']
     df['MOFF_NA'] = df['MDE_NA']*df['CE_NA']*df['GMT_NA']
+    df['MOFF_ratio'] = df['MOFF_NA']/df['MOFF_KO']
     
-    return df.loc[:,['sgRNA','DNA_KO','DNA_NA','MisType_KO','MisType_NA','GMT','MOFF_KO','MOFF_NA']]
+    return df.loc[:,['sgRNA','DNA_KO','DNA_NA','MisType_KO','MisType_NA','GMT','MOFF_KO','MOFF_NA','MOFF_ratio']]
     
 
     
