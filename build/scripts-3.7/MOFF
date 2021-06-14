@@ -1,4 +1,4 @@
-#!/home/whe/anaconda3/bin/python
+#!python
 # -*- coding: utf-8 -*-
 """
 Modular prediction of off-target effects

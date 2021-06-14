@@ -116,6 +116,18 @@ def MisNum(sg_ls,tg_ls):
     return num_ls
 
 
+def MisType(sg_ls,tg_ls):
+    tp_ls = []
+    for i in range(len(sg_ls)):
+        s1 = sg_ls[i][0:20].upper()
+        s2 = tg_ls[i][0:20].upper()
+        
+        tp = '|'.join(GetMutType(s1,s2)[1])
+        tp_ls.append(tp)
+        
+    return tp_ls
+
+
 '''This function is Calculate Combinatorial effect (CE) for given mismatch positions
 
    o input:1). m2_dic: Python dic contains CE of all the possible position combinaitons
@@ -169,6 +181,7 @@ def MOFF_score(m1_dic,m2_dic,df):
     df['MDE'] = Multiply(m1_dic,sg_ls,tg_ls)
     df['CE'] = CombineGM(m2_dic,sg_ls,tg_ls)
     df['MMs'] = MisNum(sg_ls,tg_ls)
+    df['MisType'] = MisType(sg_ls,tg_ls)
     df['GMT'] = df['GOP']**df['MMs']
     df['MOFF'] = df['MDE']*df['CE']*df['GMT']
     return df
@@ -189,12 +202,19 @@ def MOFF_aggregate(m1_dic,m2_dic,df):
     for sg in set(df['crRNA']):  ## Go through all the sgRNAs 
         df_sg = df[df['crRNA']==sg] ## Get all the off-targets for certain sgRNA
         df_score = MOFF_score(m1_dic,m2_dic,df_sg)
+        
         sg_ls.append(sg)
+        gmt_ls.append(df_score['GOP'].mean())
         ##### Sum up the scores for single gRNA-target pairs ####
-        gmt_ls.append(np.log(df_score['GMT'].sum()))
-        mde_ls.append(np.log(df_score['MDE'].sum()))
-        moff_ls.append(np.log(df_score['MOFF'].sum()))
-    df_out = pd.DataFrame({'sgRNA':sg_ls,'GMT.sum':gmt_ls,'MDE.sum':mde_ls,'MOFF.sum':moff_ls})
+        
+        if list(df_score['MM']).count(0) >=1:
+            mde_ls.append(np.log(df_score['MDE'].sum()-1))
+            moff_ls.append(np.log(df_score['MOFF'].sum()-1))
+        else:
+            mde_ls.append(np.log(df_score['MDE'].sum()))
+            moff_ls.append(np.log(df_score['MOFF'].sum()))
+    
+    df_out = pd.DataFrame({'sgRNA':sg_ls,'GMT':gmt_ls,'MDE.sum':mde_ls,'MOFF.sum':moff_ls})
     return df_out
 
 
@@ -289,21 +309,23 @@ def MOFF_Allele(m1_dic,m2_dic,s1,s2):
     np.random.seed(24) # for reproducibility
     model = models.load_model('./StaticFiles/GOP_model_3.h5')
     pred_test = list(model.predict(OneHotEndocing([s.upper()[0:20] for s in sg_ls])))
-    df['GOP'] = [g[0] for g in pred_test]
+    df['GMT'] = [g[0] for g in pred_test]
     
     df['MDE_KO'] = Multiply(m1_dic,sg_ls,d1_ls)
     df['CE_KO'] = CombineGM(m2_dic,sg_ls,d1_ls)
     df['MMs_KO'] = MisNum(sg_ls,d1_ls)
+    df['MisType_KO'] = MisType(sg_ls,d1_ls)
     df['GMT_KO'] = df['GOP']**df['MMs_KO']
     df['MOFF_KO'] = df['MDE_KO']*df['CE_KO']*df['GMT_KO'] ## MOFF score 
     
     df['MDE_NA'] = Multiply(m1_dic,sg_ls,d2_ls)
     df['CE_NA'] = CombineGM(m2_dic,sg_ls,d2_ls)
-    df['MMs_NA'] = MisNum(sg_ls,d1_ls)
+    df['MMs_NA'] = MisNum(sg_ls,d2_ls)
+    df['MisType_NA'] = MisType(sg_ls,d2_ls)
     df['GMT_NA'] = df['GOP']**df['MMs_NA']
     df['MOFF_NA'] = df['MDE_NA']*df['CE_NA']*df['GMT_NA']
     
-    return df
+    return df.loc[:,['sgRNA','DNA_KO','DNA_NA','MisType_KO','MisType_NA','GMT','MOFF_KO','MOFF_NA']]
     
 
     

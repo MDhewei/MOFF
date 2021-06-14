@@ -1,205 +1,196 @@
 Metadata-Version: 2.1
 Name: MOFF
-Version: 1.0.0
+Version: 1.1.0
 Summary: Modular prediction of off-target effects for CRISPR/Cas9 system
 Home-page: https://github.com/MDhewei/MOFF
 Author: Wei He
 Author-email: whe3@mdanderson.org
 License: UNKNOWN
-Description: Copyright (C) 2019, MD Anderson Cancer Center (whe3@mdanderson.org)
+Description: ## Introduction of MOFF 
+          
+                                        # # # # #   # # # #   # # # #  # # # # 
+                                        #   #   #   #     #   #        #       
+                                        #   #   #   #     #   # # # #  # # # #    
+                                        #   #   #   #     #   #        #          
+                                        #   #   #   # # # #   #        #          
+                                             
+        
+            Hi,My name is MOFF, I was designed to predict off-target effects for CRISPR/Cas9! 
+            
+            I have three major functions: 1). Predict off-target effects for any given gRNA-target pair.
+                                          2). Predict genome-wide off-target effects for any sgRNA.
+                                          3). Select best sgRNAs for allele-specific knockout.
+            
+            
+            Hope you enjoy playing with me ^o^!
+                                             
+            Any questions or bugs, please concat through hwkobe.1027@gmail.com or whe3@mdanderson.org
+                                             
         
         
-        # ProTiler
+        ## How to install MOFF
         
-        ProTiler is a novel computational method for fine-mapping of protein regions that are hyper-sensitive to CRISPR/Cas9 mediated gene knockouts from high-throughput tiling-sgRNA functional screens. 
+         **Note: MOFF is written in Python,Python>=2.7 is needed**
         
-        Also, ProTiler is able to predict HS regions for protein encoded by any given gene from other common protein features including conservation, domain annotation, secondary structures and PTMs distribution.
+         Step1: Install Anaconda (highly recomended)
+            
+         ```console
+         wget https://repo.continuum.io/archive/Anaconda2-2018.12-Linux-x86_64.sh 
+         bash Anaconda2-2018.12-Linux-x86_64.sh 
+         ```
         
-        If you use ProTiler please cite the following paper we published on Nature Communications:
+         Step2: Install required python packages
+         ```console   
+         pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
+         ```  
         
-        He et al. De novo identification of essential protein domains from CRISPR-Cas9 tiling-sgRNA knockout screens. **Nat Commun 10**, 4547(2019).
+         Step3: Install MOFF through pip
+         ```console     
+         pip install MOFF
+         ```
+            
+         Step4: **OR** you can install MOFF through git clone
+         ```console   
+         git clone https://github.com/MDhewei/MOFF.git
+         cd MOFF
+         python setup.py install
+         ```
+            
         
-        ## Installation
+        ## How to use MOFF
         
-        ProTiler is written in Python and R, Python>=2.7 and R>=3.5.0 is needed
+        ### 1. MOFF score: Predict off-target effects for given gRNA-target pairs
         
-        ### Dependencies
-        > **Python Packages**:
-        - matplotlib
-        - pandas
-        - numpy
-        - seaborn
+        #### Inputs for MOFF score
         
-        > **R packages**:
-        - breakfast
-        - stringr
+        MOFFscore require user to provide .csv or .txt file containing sgRNA sequences and corresponding 
+        DNA target sequences.One gRNA(20bp+PAM) and one target(20bp+PAM) per line. Note that MOFF is designed
+        for mismatch-only off-target prediction, not for indel mutations. See example file [here.](https://github.com/MDhewei/MOFF/blob/master/MOFF/MOFFscore_test.txt)
         
-        ### Step1: Install Anaconda (highly recomended)
-        ```console
-        wget https://repo.continuum.io/archive/Anaconda2-2018.12-Linux-x86_64.sh 
-        bash Anaconda2-2018.12-Linux-x86_64.sh 
-        ```
+                            
+             Arguments of the program:
         
-        ### Step2: Install required packages
-        
-        > **Install Python Packages with pip**:
-        ```console
-        pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
-        ```
-        > **Install R packages in R IDE**:
-        ```r
-        install.packages('breakfast')
-        install.packages('stringr')
-        ```
-        
-        ### Step3: Install ProTiler 
-        
-        #### Through git clone
-        ```console
-        git clone https://github.com/MDhewei/ProTiler-1.0.0.git
-        cd ProTiler-1.0.0
-        python setup.py install
-        ```
-        #### Through pip
-        ```console
-        pip install protiler
-        ```
-        
-        
-        ## Usage 
-        
-        ## ProTiler has two major functions: 
-        
-        ## 1. Call: Call and visualize HS regions from CRISPR tiling screen data.
-        
-        
-        ### Protiler call take table file(.cvs or .txt) recording CRISPR tiling screen data as inpu.An example is shown as below: 
-        
-        ![](ExampleFigures/InputTable.png)
-        
-        ### Three colums are required:
-        
-        - Symbol: This column record the symbol of target gene, for example: 'CREBBP','ACTL6A' 
-        
-        - AA: the amino acid position which certain sgRNAs cutting (what does this means?)
-        
-        - CRISPR score: the signals for each sgRNA, in the example file, z-scores in three different cell lines are used. User should select at least one column.
-        
-        
-        ###  Arguments of the program:
-        
-        #### Required arguments:
-        
-        - -i/--inputfile: 
-             
-             the file path to the input table recording tiling CRISPR sgRNA annotations and signals. .csv,.txt,.xlsx format are supported 
+             -i/--inputfile (required): 
+             Input files containing sgRNA sequences and corresponding DNA target sequences.
          
+             -p/--prefix (Optional): 
+             Prefix of the file to save the outputs,default: ScoreTest.
+        
+             -o/--outputdir (Optional): 
+             Directory to save output files,if no directory is given a folder named MOFF_scores
+             will be generated in current working directory.
          
-        - -g/--gene_id: 
         
-             the official symbol of target gene, for example: 'CREBBP','ACTL6A'
-         
-         
-        - -s/--score_columns: 
-        
-             the column number(s) of input table that recording CRISPR knowckout scores
-         
-        #### Optional arguments:
-        
-        - -o/--outputdir: 
-        
-             the directory name created in the current working directory to save output files, default='ProTilerOutput'
-             
-        - -f/--half_size: 
-        
-             The number of neiboring signals from each side selected to filter inefficient sgRNAs',default='5'
-        
-        - -t1/--threshold: 
-        
-             Threshold to supress the outliers among the signals',default='2'
-        
-        - -t2/--threshold2: 
-        
-             Threshold to detect changing points using TGUH method',default='1.5'
-        
-        
-        ### Example to run protiler call
+        #### Example to run MOFFscore
         
         ```console
-        protiler call -i sample.txt -g CREBBP -s 9,10,11 -o ProtilerOutput
+        MOFF score -i MOFFscore_test.txt
         ```
         
-        ### Output
+        #### Columns of Output table
         
-        #### 1. SegmentFile: A table record all the HS regions called by ProTiler for certain gene.
-        ![](ExampleFigures/HS_CREBBP.png)
-        
-        - AA.start: the start residue position of the segments called with TGUH
-        - AA.end: the end residue position of the segments called with TGUH
-        - n: the number of sgRNAs targeting the region
-        - m: the mean score of sgRNAs targeting the region
-        - is.HS.site: to judge whether the segment is a hyper-sensitive region
-        - length: the length of the segment
-        - Gene: the symbol of the target gene
-        
-        #### 2. Figure4Visualization: Figure presenting signals, HS regions and other protein annotations. For example:
-        
-        ![](ExampleFigures/Segmentfigure_CREBBP.png)
+            - crRNA: the sgRNAs designed to target specific DNA sequence
+            - DNA: the DNA sequence of the off-target site 
+            - MDE: predicted mismatch-dependent off-target effect 
+            - CE:  predicted combinatorial effect
+            - MMs: the number of mismatches between sgRNA and off-target
+            - GMT: predicted guide-intrinsic mismatch tolerence 
+            - MOFF: the final MOFF score predicted for given gRNA-target pair
         
         
         
-        ## 2. Predict: Predict and visualize HS regions from common protein features.
+        ### 2. MOFF aggregate: Predict the genome-wide off-target effects for given sgRNAs
         
-        ###  Arguments of the program:
+          MOFF aggregation can directly take the outputs of [CRISPRitz](https://github.com/pinellolab/CRISPRitz) as inputs. Besides, output table 
+          files generated by any genome-wide off-target searching methods such as [Cas-OFFinder](https://github.com/snugel/cas-offinder) and [RIsearch2
+          (v2.1)](https://rth.dk/resources/risearch/) are supported in theory, but the columns of outputs for different methods are different, thus 
+          it is required to modify the column name of sgRNA(20bp+PAM) and target(20bp+PAM) to 'crRNA' and 'DNA' respectively. Note that MOFF only
+          support mismatch-only off-target predictions, indel mutations are not applicable.File formats including .csv and .txt are accepted. See example
+          File [here.](https://github.com/MDhewei/MOFF/blob/master/MOFF/MOFFaggregation_test.txt)
         
-        #### Required arguments:
+             Arguments of the program:
         
-        - -l/--gene_list: 
-             
-             A list of candidate genes for which you want to predict HS regions. eg: CREBBP,FAM122A,AURKB
+             -i/--inputfile (required): 
+             Input files containing all the potneital off-target sites in the genome for given sgRNA(s)
+        
+             -p/--prefix (Optional): 
+             Prefix of the file to save the outputs,default: AggregationTest.
+        
+             -o/--outputdir (Optional): 
+             Directory to save output files,if no directory is given a folder named MOFF_aggregation
+             will be generated in current working directory.
          
-        #### Optional arguments:
         
-        - -b1/--bandwidth1:
-        
-             Bandwidth for PTMs kernel density estimation training
-         
-         
-        - -b2/--bandwidth2:: 
-        
-             Bandwideth for SIFT score kernel density estimation training
-         
-         
-        - -o/--outputdir: 
-        
-             the directory name created to save output files
-             
-        - -m/--gamma: 
-        
-             The gamma parameter for SVM model,default='10'
-        
-        
-        - -c/--penalty: 
-        
-             The penalty parameter for SVM model,default='0.01'
-        
-        
-        ### Example to run protiler predict
+        #### Example to run MOFF aggregate
         
         ```console
-        protiler predict -l CREBBP,FAM122A,SAMRCB1,AURKB -o ProtilerOutput
+        MOFF aggregate -i MOFFaggregation_test.txt
         ```
         
-        ### Output
+        #### Columns of Output table
         
-        #### 1. PredictionTable: A table record all the features of target protein and SVM score/class at each residue postion.
-        
-        ![](ExampleFigures/FAM122A_predict.png)
-        
-        #### 2. Figure4Visualization: Figure presenting predicted  HS regions and other protein annotations. For example:
-        ![](ExampleFigures/PredictedHSregion_FAM122A.png)
+            - sgRNA: the sgRNAs selected to predict genome-wide off-target
+            - MDE.sum: aggregated mismatch-dependent off-target effect 
+            - GMT.sum: aggregated guide-intrinsic mismatch tolerence 
+            - MOFF.sum: aggregated MOFF score for specific sgRNA
         
         
+        ### 3. MOFF allele: Predict the genome-wide off-target effects for given sgRNAs
         
+        MOFF allele require the users to input local DNA sequences of wild-type allele and mutant allele. 
+        Two DNA sequence should be of same length. There should be at least one hit of 20bp+PAM(NGG) in 
+        the DNA sequence to be knockout and the mutation point should be included within the hit. If you 
+        want to design sgRNA specifically target WT allele, you just input DNA sequence of WT as mutant 
+        and mutant sequence as wildtype. 
+        
+             Arguments of the program:
+        
+             -m MUTANT, --mutant MUTANT
+                        Local DNA sequence of mutant allele, at least one hit of 20bp(mutation sites included)
+                        followed by PAM (NGG) should be included, if more than one hits found, MOFF will
+                        design sgRNAs based on all possible PAMs.
+                        
+             -w WILDTYPE, --wildtype WILDTYPE
+                          Local DNA sequence of wild type allele paired with the mutant allele,which should be
+                          the same length of the mutant allele DNA sequence.
+                         
+             -p PREFIX, --prefix PREFIX
+                        Prefix of the file to save the outputs, default: AlleleTest.
+                        
+             -o OUTPUTDIR, --outputdir OUTPUTDIR
+                            Directory to save output files,if no directory is given, a output folder named
+                            MOFF_aggregation will be generated in current working directory.
+                            
+        
+        #### Example to run MOFF allele
+        
+            For example two mutant for DNMT3a:
+            ACTGACGTCTCCAACATGAGC|CGC|TTGGCGAGGCAGAGACTGCT (WT)
+            ACTGACGTCTCCAACATGAGC|tGC|TTGGCGAGGCAGAGACTGCT (R882C)
+            ACTGACGTCTCCAACATGAGC|CaC|TTGGCGAGGCAGAGACTGCT (R882H)
+            
+            1). To knockout R882C allele
+            MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
+            
+            2) To knockout R882H allele
+            MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
+            
+            3) To knockout WT in R882C cell
+            MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
+            
+            4) To knockout WT in R882H cell
+            MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -p WT
+            
+        
+        #### Columns of Output table
+        
+            - sgRNA: all the possible sgRNAs selected for allele-specific knockouts
+            - DNA_KO: DNA target of allele you want to knockout, usually it is the mutant allele
+            - DNA_NA: DNA target of allele you want to keep, usually it is the wild-type allele
+            - MOFF_KO: the predicted MOFF score to target the DNA-KO.
+            - MOFF_NA: the predicted MOFF score to target the DNA-NA.
+            
+        **It is practical to select sgRNA with high MOFF score to knockout allele but low MOFF score of non-knockout allele,
+        so that sgRNA can specifically knockout the desried allele.**
 Platform: UNKNOWN
 Description-Content-Type: text/markdown
