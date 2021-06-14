@@ -265,7 +265,7 @@ def CombinationDesign(sg_ko,sg_mut):
     sg_ls = [sg_ko] ## Add perfect sgRNA first
     for i in range(20):  ## Add all possible 2-mismatch combinations
         sg_com = list(sg_ko)
-        if i+1 != pos:
+        if i != pos:
             nt_old = sg_ko[i]
             for nt in ['A','T','C','G']:
                 sg_com = list(sg_ko)
