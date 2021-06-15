@@ -26,9 +26,14 @@
 
 ## How to install MOFF
 
- **Note: MOFF is written in Python,Python>=3.4 is needed**
 
+### Requirements
 
+- Python>=3.4
+- pandas, numpy, scipy
+- tensorflow
+ 
+### Installation 
  Step1: Install Anaconda (highly recomended)
     
  ```console
@@ -36,18 +41,12 @@
  bash Anaconda2-2018.12-Linux-x86_64.sh 
  ```
 
- Step2: Install required python packages
- ```console   
- pip install matplotlib==2.2.3 pandas sklearn numpy seaborn
- pip install tensorflow
- ```  
-
- Step3: Install MOFF through pip
+ Step2: Install MOFF through pip
  ```console     
  pip install MOFF
  ```
     
- Step4: **OR** you can install MOFF through git clone
+ Step3: **OR** you can install MOFF through git clone
  ```console   
  git clone https://github.com/MDhewei/MOFF.git
  cd MOFF
