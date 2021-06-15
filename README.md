@@ -11,7 +11,7 @@
                                 #   #   #   # # # #   #        #          
                                      
 
-    Hi,My name is MOFF, I was designed to predict off-target effects for CRISPR/Cas9! 
+    Hi, my name is MOFF. I was designed to predict off-target effects for CRISPR/Cas9! 
     
     I have three major functions: 1). Predict off-target effects for any given gRNA-target pair.
                                   2). Predict genome-wide off-target effects for any sgRNA.
@@ -20,7 +20,7 @@
     
     Hope you enjoy playing with me ^o^!
                                      
-    Any questions or bugs, please concat through hwkobe.1027@gmail.com or whe3@mdanderson.org
+    Any questions or bugs, please contact hwkobe.1027@gmail.com or whe3@mdanderson.org
                                      
 
 
@@ -61,8 +61,8 @@
 
 #### Inputs for MOFF score
 
-MOFFscore require user to provide .csv or .txt file containing sgRNA sequences and corresponding 
-DNA target sequences.One gRNA(20bp+PAM) and one target(20bp+PAM) per line. Note that MOFF is designed
+MOFFscore requires the user to provide .csv or .txt file containing sgRNA sequences and corresponding 
+DNA target sequences. Each line should have one gRNA(20bp+PAM) and one target(20bp+PAM) sequence. Note that MOFF is designed
 for mismatch-only off-target prediction, not for indel mutations. See example file [here.](https://github.com/MDhewei/MOFF/blob/master/MOFF/MOFFscore_test.txt)
 
                     
@@ -72,10 +72,10 @@ for mismatch-only off-target prediction, not for indel mutations. See example fi
      Input files containing sgRNA sequences and corresponding DNA target sequences.
  
      -p/--prefix (Optional): 
-     Prefix of the file to save the outputs,default: ScoreTest.
+     Prefix of the file to save the outputs, default: ScoreTest.
 
      -o/--outputdir (Optional): 
-     Directory to save output files,if no directory is given a folder named MOFF_scores
+     Directory to save output files, if no directory is given a folder named MOFF_scores
      will be generated in current working directory.
  
 
