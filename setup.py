@@ -17,7 +17,7 @@ def main():
          long_description = f.read()
     #version = re.search('^__version__\s*=\s*"(.*)"',open('bin/MOFF').read(), re.M).group(1)
     setup(name='MOFF',
-          version='1.1.0',
+          version='1.2.2',
           author='Wei He',
           author_email='whe3@mdanderson.org',
           description="Modular prediction of off-target effects for CRISPR/Cas9 system",
