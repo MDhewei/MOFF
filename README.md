@@ -31,7 +31,7 @@
 
 - Python>=3.4
 - pandas, numpy, scipy
-- tensorflow
+- tensorflow, keras
  
 ### Installation 
  Step1: Install Anaconda (highly recomended)
