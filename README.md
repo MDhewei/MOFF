@@ -198,5 +198,5 @@ and mutant sequence as wildtype.
     - MOFF_KO: the predicted MOFF score to target the DNA-KO.
     - MOFF_NA: the predicted MOFF score to target the DNA-NA.
     
-**To knockout desired allele, please select sgRNA with high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested), 
-**To maitain specificity of sgRNA, please select sgRNA with low MOFF_NA in relative to MOFF_KO (MOFF_NA/MOFF_KO < 0.2 is suggested)
+**To knockout desired allele, please select sgRNA with high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested),** 
+**To maitain specificity of sgRNA, please select sgRNA with low MOFF_NA in relative to MOFF_KO (MOFF_NA/MOFF_KO < 0.2 is suggested)**
