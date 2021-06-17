@@ -207,7 +207,7 @@ def MOFF_aggregate(m1_dic,m2_dic,df):
         gmt_ls.append(df_score['GOP'].mean())
         ##### Sum up the scores for single gRNA-target pairs ####
         
-        if list(df_score['MM']).count(0) >=1:
+        if list(df_score['MMs']).count(0) >=1:
             mde_ls.append(np.log(df_score['MDE'].sum()-1))
             moff_ls.append(np.log(df_score['MOFF'].sum()-1))
         else:
