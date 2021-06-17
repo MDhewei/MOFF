@@ -188,6 +188,7 @@ and mutant sequence as wildtype.
     - GMT: Guide-intrinsic mismatch tolerence for the designed sgRNA
     - MOFF_KO: the predicted MOFF score to target the DNA-KO
     - MOFF_NA: the predicted MOFF score to target the DNA-NA
+    - MOFF_ratio: the ratio between MOFF_NA/MOFF_KO
     
 **To knockout desired allele, please select sgRNA with a high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested)** 
-**To maintain specificity of sgRNA, please select sgRNA with low MOFF_NA relative to MOFF_KO (MOFF_NA/MOFF_KO < 0.2 is suggested)**
+**To maintain specificity of sgRNA, please select sgRNA with low MOFF_NA relative to MOFF_KO (MOFF_ratio < 0.2 is suggested)**
