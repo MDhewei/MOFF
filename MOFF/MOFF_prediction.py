@@ -173,7 +173,7 @@ def MOFF_score(m1_dic,m2_dic,df):
     tg_ls = list(df['DNA']) # Get list of input DNA targets
     
     np.random.seed(24) # for reproducibility
-    model = models.load_model('./StaticFiles/GOP_model_3.h5')
+    model = models.load_model(os.path.join(RequiredFilePath,'GOP_model_3.h5'))
     pred_test = list(model.predict(OneHotEndocing([s.upper()[0:20] for s in sg_ls])))
     df['GOP'] = [g[0] for g in pred_test]
     
@@ -307,7 +307,7 @@ def MOFF_Allele(m1_dic,m2_dic,s1,s2):
     
     
     np.random.seed(24) # for reproducibility
-    model = models.load_model('./StaticFiles/GOP_model_3.h5')
+    model = models.load_model(os.path.join(RequiredFilePath,'GOP_model_3.h5'))
     pred_test = list(model.predict(OneHotEndocing([s.upper()[0:20] for s in sg_ls])))
     df['GMT'] = [g[0] for g in pred_test]
     
