@@ -170,10 +170,10 @@ and mutant sequence as wildtype.
     1). To knockout R882C allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
     
-    2) To knockout R882H allele
+    2). To knockout R882H allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
     
-    3) To knockout WT in R882C cell
+    3). To knockout WT in R882C cell
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WT
     
     4). To knockout WT in R882H cell
@@ -190,4 +190,5 @@ and mutant sequence as wildtype.
     - MOFF_NA: the predicted MOFF score to target the DNA-NA
     
 **To knockout desired allele, please select sgRNA with a high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested)** 
+
 **To maintain specificity of sgRNA, please select sgRNA with low MOFF_NA relative to MOFF_KO (MOFF_NA/MOFF_KO < 0.2 is suggested)**
