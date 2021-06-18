@@ -153,11 +153,12 @@ and mutant sequence as wildtype.
                   the same length as the mutant allele DNA sequence.
                  
      -p PREFIX, --prefix PREFIX
-                Prefix of the file to save the outputs, default: AlleleTest.
+                Prefix of the file to save the outputs, in the format PREFIX + _allele_specific_knockouts, 
+                default: AlleleTest.
                 
      -o OUTPUTDIR, --outputdir OUTPUTDIR
                    Directory to save output files, if no directory is given, a output folder named
-                   MOFF_aggregation will be generated in current working directory.
+                   MOFF_Allele will be generated in current working directory.
                     
 
 #### Example to run MOFF allele
@@ -170,10 +171,10 @@ and mutant sequence as wildtype.
     1). To knockout R882C allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
     
-    2) To knockout R882H allele
+    2). To knockout R882H allele
     MOFF allele -m ACTGACGTCTCCAACATGAGCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
     
-    3) To knockout WT in R882C cell
+    3). To knockout WT in R882C cell
     MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WTinR882C
     
     4). To knockout WT in R882H cell
@@ -190,5 +191,6 @@ and mutant sequence as wildtype.
     - MOFF_NA: the predicted MOFF score to target the DNA-NA
     - MOFF_ratio: the ratio between MOFF_NA/MOFF_KO
     
-**To knockout desired allele, please select sgRNA with a high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested)** 
+**To knockout desired allele, please select sgRNA with a high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested)**
+
 **To maintain specificity of sgRNA, please select sgRNA with low MOFF_NA relative to MOFF_KO (MOFF_ratio < 0.2 is suggested)**
