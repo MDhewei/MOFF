@@ -155,20 +155,5 @@ def MOFFMain():
         df_out.to_csv(os.path.join(outputdir,prefix+'_MOFF.aggregate.csv'))
         logging.info('^o^ Great! Job finished and results successfully saved, Check it in the output folder! Bye!')
         
-        
-    if args.subcmd == 'allele':
-        s1 = args.mutant; s2 =  args.wildtype
-        if len(s1) != len(s2):
-            logging.error('!!! DNA sequences of mutant allele and wildtype allele should be of same length!')
-            sys.exit(-1)
-        if 'GG' not in s1[21:] and 'CC' not in s1[0:-21]:
-            logging.error('!!! Sorry, I cannot find PAM in the sequence, try extend your input sequence?')
-            sys.exit(-1)
-        logging.info("Start sgRNA design for your allele-specific knockouts, Let's go ...")    
-        df_out = MOFF_Allele(m1_dic,m2_dic,s1,s2)
-        
-        df_out.to_csv(os.path.join(outputdir,prefix+'_allele_specific_knockouts.csv'))
-        logging.info('^o^ Great! Job finished and results successfully saved, Check it in the output folder! Bye!')
-        
 if __name__ == '__main__':
     MOFFMain()    
