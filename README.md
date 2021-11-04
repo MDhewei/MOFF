@@ -126,3 +126,66 @@ MOFF aggregate -i MOFFaggregation_test.txt
     - GMT: aggregated guide-intrinsic mismatch tolerence 
     - MDE.sum: aggregated mismatch-dependent off-target effect 
     - MOFF.sum: aggregated MOFF score for specific sgRNA
+    
+### 3. MOFF allele: Predict the genome-wide off-target effects for given sgRNAs
+
+MOFF allele requires the users to input local DNA sequences of a wild-type allele and a mutant allele. 
+The two DNA sequences should be of the same length. There should be at least one hit of 20bp+PAM(NGG) in 
+the DNA sequence for knockout and the mutation point should be included within the hit. If you 
+want to design the sgRNA to specifically target the WT allele, just input DNA sequence of WT as mutant 
+and mutant sequence as wildtype. 
+
+     Arguments of the program:
+
+     -m MUTANT, --mutant MUTANT
+                Local DNA sequence of mutant allele, at least one hit of 20bp (mutation sites included)
+                followed by PAM (NGG) should be included, if more than one hit is found, MOFF will
+                design sgRNAs based on all possible PAMs.
+                
+     -w WILDTYPE, --wildtype WILDTYPE
+                  Local DNA sequence of wild type allele paired with the mutant allele, which should be
+                  the same length as the mutant allele DNA sequence.
+                 
+     -p PREFIX, --prefix PREFIX
+                Prefix of the file to save the outputs, in the format PREFIX + _allele_specific_knockouts, 
+                default: AlleleTest.
+                
+     -o OUTPUTDIR, --outputdir OUTPUTDIR
+                   Directory to save output files, if no directory is given, a output folder named
+                   MOFF_Allele will be generated in current working directory.
+                    
+
+#### Example to run MOFF allele
+
+    For example two mutant for DNMT3a:
+    ACTGACGTCTCCAACATGAGC|CGC|TTGGCGAGGCAGAGACTGCT (WT)
+    ACTGACGTCTCCAACATGAGC|tGC|TTGGCGAGGCAGAGACTGCT (R882C)
+    ACTGACGTCTCCAACATGAGC|CaC|TTGGCGAGGCAGAGACTGCT (R882H)
+    
+    1). To knockout R882C allele
+    MOFF allele -m ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882C
+    
+    2). To knockout R882H allele
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCACTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -p R882H
+    
+    3). To knockout WT in R882C cell
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCTGCTTGGCGAGGCAGAGACTGCT -p WTinR882C
+    
+    4). To knockout WT in R882H cell
+    MOFF allele -m ACTGACGTCTCCAACATGAGCCGCTTGGCGAGGCAGAGACTGCT -w ACTGACGTCTCCAACATGAGCCACTTGGCGAGGCAGAGACTGCT -p WTinR882H
+    
+
+#### Columns of Output table
+
+    - sgRNA: all the possible sgRNAs selected for allele-specific knockouts
+    - DNA_KO: DNA target of allele you want to knockout, usually it is the mutant allele
+    - DNA_NA: DNA target of allele you want to keep, usually it is the wild-type allele
+    - GMT: Guide-intrinsic mismatch tolerence for the designed sgRNA
+    - MOFF_KO: the predicted MOFF score to target the DNA-KO
+    - MOFF_NA: the predicted MOFF score to target the DNA-NA
+    - MOFF_ratio: the ratio between MOFF_NA/MOFF_KO
+    
+**To knockout desired allele, please select sgRNA with a high MOFF_KO score to knockout (MOFF_KO > 0.5 is suggested)**
+
+**To maintain specificity of sgRNA, please select sgRNA with low MOFF_NA relative to MOFF_KO (MOFF_ratio < 0.2 is suggested)**
+
