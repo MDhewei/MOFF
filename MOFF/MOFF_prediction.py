@@ -197,22 +197,21 @@ def MOFF_score(m1_dic,m2_dic,df):
    o Output: A panda dataframe with aggregated off-target scores for each sgRNAs using different models (factors) 
 '''
 def MOFF_aggregate(m1_dic,m2_dic,df):
-    
+    df_score = MOFF_score(m1_dic,m2_dic,df)
     sg_ls = []; gmt_ls = []; mde_ls = []; moff_ls = []
     for sg in set(df['crRNA']):  ## Go through all the sgRNAs 
-        df_sg = df[df['crRNA']==sg] ## Get all the off-targets for certain sgRNA
-        df_score = MOFF_score(m1_dic,m2_dic,df_sg)
-        
+        df_sg = df_score[df_score['crRNA']==sg] ## Get all the off-targets for certain sgRNA
+        #df_score = MOFF_score(m1_dic,m2_dic,df_sg)
         sg_ls.append(sg)
-        gmt_ls.append(df_score['GOP'].mean())
+        gmt_ls.append(df_sg['GOP'].mean())
         ##### Sum up the scores for single gRNA-target pairs ####
         
         if list(df_score['MMs']).count(0) >=1:
-            mde_ls.append(np.log(df_score['MDE'].sum()-1))
-            moff_ls.append(np.log(df_score['MOFF'].sum()-1))
+            mde_ls.append(np.log(df_sg['MDE'].sum()-1))
+            moff_ls.append(np.log(df_sg['MOFF'].sum()-1))
         else:
-            mde_ls.append(np.log(df_score['MDE'].sum()))
-            moff_ls.append(np.log(df_score['MOFF'].sum()))
+            mde_ls.append(np.log(df_sg['MDE'].sum()))
+            moff_ls.append(np.log(df_sg['MOFF'].sum()))
     
     df_out = pd.DataFrame({'sgRNA':sg_ls,'GMT':gmt_ls,'MDE.sum':mde_ls,'MOFF.sum':moff_ls})
     return df_out
