@@ -3,6 +3,8 @@
 ![](https://img.shields.io/badge/language-python-orange.svg)
 
 ## Introduction of MOFF 
+
+<div align="center"><img src="Figures/Workflow.png"  height="500" width="700"></div>
   
                                 # # # # #   # # # #   # # # #  # # # # 
                                 #   #   #   #     #   #        #       
