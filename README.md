@@ -4,13 +4,7 @@
 
 ## Introduction of MOFF 
 
-<div align="center"><img src="Figures/moff-high-resolution-logo-color-on-transparent-background.png"  height="200" width="700"></div>
-  
-                                # # # # #   # # # #   # # # #  # # # # 
-                                #   #   #   #     #   #        #       
-                                #   #   #   #     #   # # # #  # # # #    
-                                #   #   #   #     #   #        #          
-                                #   #   #   # # # #   #        #          
+    <div align="center"><img src="Figures/moff-high-resolution-logo-color-on-transparent-background.png"  height="175" width="800"></div>
                                      
 
     Hi, my name is MOFF. I was designed to predict off-target effects for CRISPR/Cas9! 
