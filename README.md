@@ -4,7 +4,7 @@
 
 ## Introduction of MOFF 
 
-<div align="center"><img src="Figures/Workflow.png"  height="500" width="700"></div>
+<div align="center"><img src="Figures/moff-high-resolution-logo-color-on-transparent-background.png"  height="200" width="700"></div>
   
                                 # # # # #   # # # #   # # # #  # # # # 
                                 #   #   #   #     #   #        #       
