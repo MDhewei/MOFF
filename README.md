@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/language-python-orange.svg)
 
 ## Introduction of MOFF 
-<div align="left"><img src="Figures/moff-high-resolution-logo-color-on-transparent-background.png"  height="125" width="600"></div>
+<div align="left"><img src="Figures/moff-high-resolution-logo-color-on-transparent-background.png"  height="140" width="600"></div>
                                      
 
     Hi, my name is MOFF. I was designed to predict off-target effects for CRISPR/Cas9! 
