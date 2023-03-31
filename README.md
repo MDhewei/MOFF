@@ -24,7 +24,7 @@
 
 ### Requirements
 
-- Python<3.7, >=3.4
+- Python>=3.4
 - numpy==1.19.5, scipy>=1.0
 - tensorflow==2.6.2, keras>=2.6.0
  
